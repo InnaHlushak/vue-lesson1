@@ -1,3 +1,8 @@
-h1 {
-    color: green;
+.container {
+    font-family: sans-serif;
+    border: 1px solid #8e8d8d;
+    border-radius: 2px;
+    padding: 20px 30px;
+    margin-top: 1em;
+    margin-bottom: 40px;
 }
