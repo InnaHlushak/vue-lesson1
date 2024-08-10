@@ -1,4 +1,3 @@
-
 const options = {
     moduleCache: {
         vue: Vue
@@ -21,6 +20,13 @@ const options = {
 
 const { loadModule } = window['vue3-sfc-loader'];
 
+//Спільний об'єкт стану
+const { createApp, reactive } = Vue
+const sharedStateObject = reactive({
+    homeWork: '"Домашнє завдання 1"',
+})
+
+//Основний обєкт Vue (екземпляр додатку)
 const app = Vue.createApp({
     components: {
         'my-component1': Vue.defineAsyncComponent(() => loadModule('./js/myComponent1.vue', options)),
@@ -28,14 +34,15 @@ const app = Vue.createApp({
     },
     data() {
         return {
-            nunberClick: 0,
+            sharedStateObject,
+            numberClick: 0,
         }
     },
     template: `
-        <h1>Домашнє завдання 1 </h1>        
+        <h1> {{sharedStateObject.homeWork}}</h1>        
         <div class="container">
-            <p> Ви натиснули кнопку {{nunberClick}} разів. </p>
-            <button class="btn btn-primary" @click="nunberClick++"> Click me! </button>
+            <p> Натисніть кнопку таку кількість разів, скільки завдань  виконали. Ви натиснули кнопку {{numberClick}} разів.</p>
+            <button class="btn btn-primary" @click="numberClick++"> Click me! </button>
         </div>
         <div class="container">
             <my-component1></my-component1>
@@ -47,3 +54,17 @@ const app = Vue.createApp({
 });
 
 app.mount('#app');
+
+//Другорядний обєкт Vue (екземпляр додатку)
+const app1 = Vue.createApp({
+    data() {        
+         return {
+            sharedStateObject,
+        }
+    },
+    template: `
+        <h2>{{sharedStateObject.homeWork}} виконано!</h2>
+    `
+});
+
+app1.mount('#app1');

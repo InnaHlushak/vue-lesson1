@@ -1,19 +1,19 @@
 <template>
-      <p>Фільм набрав {{res}} лайків</p>
-      <p>{{getConclusion}} </p>
-      <button @click="doConclution">Мої висновки</button>
-      <p>{{myConclution}}</p>
+    <p>Фільм набрав {{res}} лайків</p>
+    <p>{{getConclusion}} </p>
+    <button @click="doConclution">Мої висновки</button>
+    <p>{{myConclution}}</p>
 </template>
   
 <script>
   export default {
     name: 'MyComponent3',
     props: {      
-      res: {
-          type: Number,
-          required: false,
-          default: 0
-      },      
+        res: {
+            type: Number,
+            required: false,
+            default: 0
+        },      
     },
     data() {
       return {
@@ -23,24 +23,21 @@
     //Обчислювальна властивiсть:
     computed: {
       // геттер обчислювальної властивості: 
-      getConclusion() {
-        let conclution = '';
-        if (this.res > 0) { 
-          conclution = 'Фільм варто подивитися'
-        } else {
-          conclution = 'Фільм не варто дивитися'
+        getConclusion() {
+            let conclution = '';
+            if (this.res > 0) { 
+                conclution = 'Фільм варто подивитися'
+            } else {
+                conclution = 'Фільм не варто дивитися'
+            }
+            return conclution;
         }
-        return conclution;
-      }
     },
   //Обробник подій:
     methods: {
-      doConclution() {
-          this.myConclution = 'Мені фільм сподовався';
-      }
+        doConclution() {
+            this.myConclution = 'Мені фільм сподовався';
+        }
     }
 }
 </script>
-
-<style scoped>
-</style>

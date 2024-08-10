@@ -8,25 +8,22 @@
         <button class="btn btn-success w-50" @click="counter--"> Dislike </button>
     </div>
     <div class="container">
-      <my-component3 :res="counter"></my-component3>
+        <my-component3 :res="counter"></my-component3>
     </div>
 </template>
   
 <script>
-  import myComponent3 from "./myComponent3.vue"
+    import myComponent3 from "./myComponent3.vue"
 
-  export default {
-    name: 'MyComponent2',
-    components: {
-      myComponent3
-    },
-    data() {
-      return {
-        counter: 0,
-      }
+    export default {
+        name: 'MyComponent2',
+        components: {
+            myComponent3
+        },
+        data() {
+            return {
+                counter: 0,
+            }
+        }
     }
-  }
 </script>
-
-<style scoped>
-</style>
